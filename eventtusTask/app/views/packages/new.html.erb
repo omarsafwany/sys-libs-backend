@@ -1,0 +1,24 @@
+<h1>New Package</h1>
+<%= form_tag( '/packages' ) do |f| %>
+
+    <% if @package.errors.any? %>
+        <div id="error_explanation">
+        <h2>
+            <%= pluralize(@package.errors.count, "error") %> prohibited
+            this package from being saved:
+        </h2>
+        <ul>
+            <% @package.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+            <% end %>
+        </ul>
+        </div>
+    <% end %>
+
+    <%= label_tag "Name" %>
+    <%= text_field_tag "package[name]" %>
+    <%= label_tag "OS", "Operating System" %>
+    <%= text_field_tag "package[os]" %>
+    <%= submit_tag "Create" %>
+
+<% end %>
