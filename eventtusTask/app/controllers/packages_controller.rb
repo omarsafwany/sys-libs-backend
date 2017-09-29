@@ -9,6 +9,15 @@ class PackagesController < ApplicationController
 
   def create
     @package = Package.new(package_params)
+    @package.save
+    if params[:package][:dependencies]
+      params[:package][:dependencies].each do |d|
+        @dependency = Dependency.new()
+        @dependency.name = d
+        @dependency.package_id = @package.id
+        @dependency.save
+      end
+    end
     if @package.save
         redirect_to packages_path
     else
@@ -27,7 +36,7 @@ class PackagesController < ApplicationController
   def update
     @package = Package.find(params[:id])
     if @package.update(package_params)
-      redirect_to @packages_path
+      redirect_to packages_path
     else
       render 'edit'
     end

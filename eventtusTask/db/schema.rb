@@ -20,8 +20,6 @@ ActiveRecord::Schema.define(version: 20170928200746) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "dependencies", ["package_id"], name: "index_dependencies_on_package_id"
-
   create_table "packages", force: :cascade do |t|
     t.string   "name",       null: false
     t.string   "os",         null: false

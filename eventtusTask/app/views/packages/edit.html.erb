@@ -1,2 +1,30 @@
-<h1>Packages#edit</h1>
-<p>Find me in app/views/packages/edit.html.erb</p>
+<h1>Edit package</h1>
+
+<%= form_tag( '/packages/'+@package.id.to_s, method: :put) do |form| %>
+
+ <% if @package.errors.any? %>
+   <div id="error_explanation">
+     <h2>
+       <%= pluralize(@package.errors.count, "error") %> prohibited
+       this package from being saved:
+     </h2>
+     <ul>
+       <% @package.errors.full_messages.each do |msg| %>
+         <li><%= msg %></li>
+       <% end %>
+     </ul>
+   </div>
+ <% end %>
+
+ <%= label_tag "Name" %>
+ <%= text_field_tag "package[name]", @package.name %>
+ <%= label_tag "OS", "Operating System" %>
+ <%= select_tag 'package[os]', options_for_select(['','Mac', 'Windows'],@package.os) %>
+ <a id="add">add dependency</a>
+ <div class="div" id="dependenciesDiv"></div>
+ <%= submit_tag "Update", :class => 'success button' %>
+ <%= javascript_include_tag "package" %>
+
+<% end %>
+
+<%= link_to 'Back', packages_path %>

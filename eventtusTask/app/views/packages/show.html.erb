@@ -1,2 +1,14 @@
-<h1>Packages#show</h1>
-<p>Find me in app/views/packages/show.html.erb</p>
+<h1>Package: #<%= @package.id %> </h1>
+<p>
+<strong>Name:</strong>
+<%= @package.name %>
+</p>
+
+<p>
+<% if @package.dependencies.any?%>
+    <p><b><%=@package.dependencies.count%></b> dependencies found</p>
+    <ul><% @package.dependencies.each do|d| %> <li><%= d.name %></li> <% end%></ul>
+<% else %>
+    <p>No dependencies found</p>
+<% end %>
+</p>
