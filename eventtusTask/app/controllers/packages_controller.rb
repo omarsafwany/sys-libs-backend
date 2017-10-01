@@ -1,4 +1,7 @@
 class PackagesController < ApplicationController
+  protect_from_forgery with: :null_session
+  require 'rbconfig'
+
   def index
     @packages = Package.all
   end
@@ -47,6 +50,19 @@ class PackagesController < ApplicationController
     @package.destroy
     
     redirect_to packages_path
+  end
+
+  def search
+    @packages = request[:packages]
+    @os = request[:os]
+    @result = []
+    @packages.each do |p|
+       if Package.where(name: p).where(os: @os).any?
+        @pkg = Package.includes(:dependencies).where(name: p).where(os: @os).first
+        @result << @pkg
+       end
+    end
+    render :json => {:data => @result}
   end
 
   private

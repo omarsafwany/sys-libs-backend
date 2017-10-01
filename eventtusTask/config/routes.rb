@@ -1,19 +1,20 @@
 Rails.application.routes.draw do
 
-  get 'packages/index'
+  # get 'packages/index'
 
-  get 'packages/new'
+  # get 'packages/new'
 
-  get 'packages/create'
+  # get 'packages/create'
 
-  get 'packages/show'
+  # get 'packages/show'
 
-  get 'packages/edit'
+  # get 'packages/edit'
 
-  get 'packages/update'
+  # get 'packages/update'
 
-  get 'packages/destroy'
+  # get 'packages/destroy'
 
+  post 'packages/search' , :to => 'packages#search'
   resources :packages
   resources :users
 
