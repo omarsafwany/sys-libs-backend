@@ -39,6 +39,15 @@ class PackagesController < ApplicationController
   def update
     @package = Package.find(params[:id])
     if @package.update(package_params)
+      if params[:package][:dependencies]
+        @package.dependencies.destroy_all
+        params[:package][:dependencies].each do |d|
+          @dependency = Dependency.new()
+          @dependency.name = d
+          @dependency.package_id = @package.id
+          @dependency.save
+        end
+      end
       redirect_to packages_path
     else
       render 'edit'
@@ -58,11 +67,13 @@ class PackagesController < ApplicationController
     @result = []
     @packages.each do |p|
        if Package.where(name: p).where(os: @os).any?
-        @pkg = Package.includes(:dependencies).where(name: p).where(os: @os).first
-        @result << @pkg
+        @pkg = Package.where(name: p).where(os: @os).first
+        @result << @pkg.as_json(include:[:dependencies])
+        # break
+        # @result << @pkg
        end
     end
-    render :json => {:data => @result}
+    render :json => @result
   end
 
   private

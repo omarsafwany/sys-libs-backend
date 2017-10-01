@@ -21,7 +21,11 @@
  <%= label_tag "OS", "Operating System" %>
  <%= select_tag 'package[os]', options_for_select(['','Mac', 'Windows'],@package.os) %>
  <a id="add">add dependency</a>
- <div class="div" id="dependenciesDiv"></div>
+ <div class="div" id="dependenciesDiv">
+     <% @package.dependencies.each do |d|%>
+        <div><input type="text" name="package[dependencies][]" value="<%=d.name%>"><a onclick="$(this).parent().remove()">x</a></div>
+     <% end %>
+ </div>
  <%= submit_tag "Update", :class => 'success button' %>
  <%= javascript_include_tag "package" %>
 
