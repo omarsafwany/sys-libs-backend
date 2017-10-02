@@ -1,19 +1,5 @@
 Rails.application.routes.draw do
 
-  # get 'packages/index'
-
-  # get 'packages/new'
-
-  # get 'packages/create'
-
-  # get 'packages/show'
-
-  # get 'packages/edit'
-
-  # get 'packages/update'
-
-  # get 'packages/destroy'
-
   post 'packages/search' , :to => 'packages#search'
   resources :packages
   resources :users
@@ -22,7 +8,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  root 'packages#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

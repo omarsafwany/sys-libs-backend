@@ -1,28 +1,22 @@
-== README
+# Readme
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is the backend for the gem. The main features are:
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+  - Create, Read, Update and Delete packages along with their dependencies.
+  - Search and return the packages's dependencies.
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+### Installation
+
+Below are the steps to run the project:
+
+```sh
+$ clone the project "git clone git@bitbucket.org:omarsafwany/eventtus-task.git"
+$ cd "eventtus-task"
+$ rake db:migrate RAILS_ENV=development
+$ bundle install
+$ rails server
+```
+
+Open "http://localhost:3000" and it should display the list of available packages.
+

@@ -19,7 +19,7 @@
  <%= label_tag "Name" %>
  <%= text_field_tag "package[name]", @package.name %>
  <%= label_tag "OS", "Operating System" %>
- <%= select_tag 'package[os]', options_for_select(['','Mac', 'Windows'],@package.os) %>
+ <%= select_tag 'package[os]', options_for_select(['','mac', 'windows', 'linux', 'unix'],@package.os) %>
  <a id="add">add dependency</a>
  <div class="div" id="dependenciesDiv">
      <% @package.dependencies.each do |d|%>

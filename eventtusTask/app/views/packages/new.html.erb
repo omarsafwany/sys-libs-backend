@@ -18,7 +18,7 @@
     <%= label_tag "Name" %>
     <%= text_field_tag "package[name]" %>
     <%= label_tag "OS", "Operating System" %>
-    <%= select_tag "package[os]", "<option>Mac</option><option>Windows</option>", include_blank: 'Select' %>
+    <%= select_tag "package[os]", "<option>mac</option><option>windows</option><option>linux</option><option>unix</option>", include_blank: 'Select' %>
     <a id="add">add dependency</a>
     <div class="div" id="dependenciesDiv"></div>
     <%= submit_tag "Create", :class => 'success button' %>
