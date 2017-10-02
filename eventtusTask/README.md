@@ -20,3 +20,6 @@ $ rails server
 
 Open "http://localhost:3000" and it should display the list of available packages.
 
+## Contributing
+
+Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/sys_libs.
