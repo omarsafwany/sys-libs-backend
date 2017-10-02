@@ -5,6 +5,7 @@
    <th>Name</th>
    <th>OS</th>
    <th>System Libraries Needed</th>
+   <th>Actions</th>
  </tr>
 
  <% @packages.each do |package| %>
@@ -12,11 +13,13 @@
      <td><%= package.name %></td>
      <td><%= package.os %></td>
      <td><% if !package.dependencies.any?%> - <% end %><% package.dependencies.each do|d| %> <%= d.name %><br> <% end%></td>
-     <td><%= link_to 'Show', package_path(package) %></td>
-     <td><%= link_to 'Edit', edit_package_path(package) %></td>
-     <td><%= link_to 'Destroy', package_path(package),
-     method: :delete,
-     data: { confirm: 'Are you sure?' } %></td>
+     <td>
+         <%= link_to 'Show', package_path(package) %>
+         <%= link_to 'Edit', edit_package_path(package) %>
+         <%= link_to 'Destroy', package_path(package),
+         method: :delete,
+         data: { confirm: 'Are you sure?' } %>
+     </td>
    </tr>
  <% end %>
 </table>
