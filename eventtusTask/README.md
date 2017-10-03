@@ -20,6 +20,8 @@ $ rails server
 
 Open "http://localhost:3000" and it should display the list of available packages.
 
+N.B. To check the live version that is working with the gem, go to https://eventtus-task.herokuapp.com/ 
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/sys_libs.
